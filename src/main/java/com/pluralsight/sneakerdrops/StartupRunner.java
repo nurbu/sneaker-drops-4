@@ -38,15 +38,15 @@ public class StartupRunner implements CommandLineRunner {
             System.out.println("0: Quit");
             int choice = scanner.nextInt();
             switch (choice) {
-                case 1:
-                    listSneakers();
-                case 0:
-                    istrue = false;
+                case 1 -> listSneakers();
+                case 0 -> istrue = false;
             }
         }
     }
 
     private void listSneakers() {
+        System.out.println("Sneakers in stock: " + sneakerRepository.count());
+        sneakerRepository.findAll().forEach(System.out::println);
     }
 
     private void seedData() {
@@ -61,8 +61,6 @@ public class StartupRunner implements CommandLineRunner {
             sneakerRepository.save(new Sneaker("Jordans_4", 300, 2004));
             sneakerRepository.save(new Sneaker("Jordans_11", 150, 2007));
         }
-        brandRepository.findAll().forEach(System.out::println);
-        sneakerRepository.findAll().forEach(System.out::println);
 
     }
 }
